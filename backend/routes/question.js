@@ -149,6 +149,7 @@ router.delete('/:id', auth, async (req, res) => {
     
     await Notification.deleteMany({ question: question._id });
     
+    
     await question.deleteOne();
     res.json({ message: 'Question deleted' });
   } catch (error) {

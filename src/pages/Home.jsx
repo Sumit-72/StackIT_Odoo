@@ -220,46 +220,50 @@ const Home = () => {
       </div>
 
       {/* Pagination Controls */}
-      {totalPages > 1 && (
-        <div className="mt-8 ml-6 pl-6 border-l-2 border-gray-200">
-          <div className="flex items-center justify-between">
-            <div className="text-sm text-gray-600">
-              Showing {indexOfFirstQuestion + 1} to {Math.min(indexOfLastQuestion, sortedAndFilteredQuestions.length)} of {sortedAndFilteredQuestions.length} questions
-            </div>
-            <div className="flex items-center space-x-2">
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                Previous
-              </button>
-              
-              {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
-                <button
-                  key={pageNumber}
-                  onClick={() => handlePageChange(pageNumber)}
-                  className={`px-3 py-2 text-sm border rounded-lg transition-colors ${
-                    currentPage === pageNumber
-                      ? 'bg-black text-white border-black'
-                      : 'border-gray-300 text-gray-700 hover:bg-gray-50'
-                  }`}
-                >
-                  {pageNumber}
-                </button>
-              ))}
-              
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                Next
-              </button>
-            </div>
-          </div>
+      <div className="mt-8 flex flex-col items-center space-y-4">
+        <div className="text-sm text-gray-600">
+          Showing {indexOfFirstQuestion + 1} to {Math.min(indexOfLastQuestion, sortedAndFilteredQuestions.length)} of {sortedAndFilteredQuestions.length} questions
+          {totalPages > 1 && ` (Page ${currentPage} of ${totalPages})`}
         </div>
-      )}
+        {totalPages > 1 && (
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              Previous
+            </button>
+            
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
+              <button
+                key={pageNumber}
+                onClick={() => handlePageChange(pageNumber)}
+                className={`px-3 py-2 text-sm border rounded-lg transition-colors ${
+                  currentPage === pageNumber
+                    ? 'bg-black text-white border-black'
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                {pageNumber}
+              </button>
+            ))}
+            
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              Next
+            </button>
+          </div>
+        )}
+        {totalPages <= 1 && (
+          <div className="text-sm text-gray-500">
+            All questions are shown on this page
+          </div>
+        )}
+      </div>
       
       <Footer />
     </div>
