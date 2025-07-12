@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
 const QuestionDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [newAnswer, setNewAnswer] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     fetchQuestionAndAnswers();
@@ -79,6 +82,37 @@ const QuestionDetail = () => {
     }
   };
 
+  const handleDeleteQuestion = async () => {
+    if (!window.confirm('Are you sure you want to delete this question? This action cannot be undone.')) {
+      return;
+    }
+
+    setDeleting(true);
+    try {
+      const token = localStorage.getItem('token');
+      await axios.delete(`/api/questions/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      alert('Question deleted successfully!');
+      navigate('/');
+    } catch (error) {
+      console.error('Error deleting question:', error);
+      if (error.response?.status === 401) {
+        alert('Please login to delete questions');
+        navigate('/login');
+      } else if (error.response?.status === 403) {
+        alert('You can only delete your own questions');
+      } else {
+        alert('Error deleting question. Please try again.');
+      }
+    } finally {
+      setDeleting(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -101,11 +135,25 @@ const QuestionDetail = () => {
     );
   }
 
+  const canDeleteQuestion = user && question.user && user.id === question.user._id;
+
   return (
     <div className="max-w-4xl mx-auto p-4">
       {/* Question */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-4">{question.title}</h1>
+        <div className="flex justify-between items-start mb-4">
+          <h1 className="text-3xl font-bold">{question.title}</h1>
+          {canDeleteQuestion && (
+            <button
+              onClick={handleDeleteQuestion}
+              disabled={deleting}
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {deleting ? 'Deleting...' : 'Delete Question'}
+            </button>
+          )}
+        </div>
+        
         <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
           <span>Asked by {question.user?.username || 'Anonymous'}</span>
           <span>{new Date(question.createdAt).toLocaleDateString()}</span>
