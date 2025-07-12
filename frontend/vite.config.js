@@ -8,9 +8,9 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://stack-it-odoo-backend.vercel.app',
+        target: process.env.VITE_BACKEND_URL,
         changeOrigin: true,
       },
     },
   },
-}) 
+})
