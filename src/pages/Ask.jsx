@@ -52,7 +52,7 @@ const Ask = () => {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-black mb-4">Ask a Question</h1>
+        <h1 className="text-4xl font-bold text-black mb-4 handwritten">Ask a Question</h1>
         <p className="text-gray-600 text-lg">
           Share your knowledge and help others by asking a well-formulated question.
         </p>

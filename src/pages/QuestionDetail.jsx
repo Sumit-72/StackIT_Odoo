@@ -238,7 +238,7 @@ const QuestionDetail = () => {
       {/* Question */}
       <div className="mb-12">
         <div className="flex justify-between items-start mb-6">
-          <h1 className="text-4xl font-bold text-black">{question.title}</h1>
+          <h1 className="text-4xl font-bold text-black handwritten">{question.title}</h1>
           {canDeleteQuestion && (
             <button
               onClick={handleDeleteQuestion}

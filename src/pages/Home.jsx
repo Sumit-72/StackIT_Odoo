@@ -112,7 +112,7 @@ const Home = () => {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-black mb-4">Welcome to StackIt</h1>
+        <h1 className="text-4xl font-bold text-black mb-4 handwritten">Welcome to StackIt</h1>
         <p className="text-gray-600 text-lg mb-8">
           Find answers to your questions or help others by answering theirs.
         </p>

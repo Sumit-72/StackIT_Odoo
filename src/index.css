@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Pacifico&display=swap');
 
 :root {
-  font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   line-height: 1.5;
@@ -12,23 +12,56 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  /* Minimalistic color palette */
-  --background: #ffffff;
-  --foreground: #000000;
+  /* Forum App Color System - Light Mode */
+  --background: #FAFAFA;
+  --foreground: #1A1A1A;
+  --subtext: #666666;
+  --cta: #6E1E6B;
+  --accent: #FFB400;
+  --tags: #E0E0E0;
+  --links: #1976D2;
   --muted: #f8f9fa;
-  --muted-foreground: #6c757d;
-  --border: #e9ecef;
+  --muted-foreground: #666666;
+  --border: #E0E0E0;
   --input: #ffffff;
-  --primary: #000000;
+  --primary: #6E1E6B;
   --primary-foreground: #ffffff;
   --secondary: #f8f9fa;
-  --secondary-foreground: #000000;
-  --accent: #f8f9fa;
-  --accent-foreground: #000000;
+  --secondary-foreground: #1A1A1A;
+  --accent-foreground: #1A1A1A;
   --destructive: #dc3545;
   --destructive-foreground: #ffffff;
-  --ring: #000000;
+  --ring: #6E1E6B;
   --radius: 0.5rem;
+  
+  /* Spacing System */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --background: #0F0F0F;
+  --foreground: #FFFFFF;
+  --subtext: #B3B3B3;
+  --cta: #8B4A87;
+  --accent: #FFD700;
+  --tags: #2A2A2A;
+  --links: #64B5F6;
+  --muted: #1A1A1A;
+  --muted-foreground: #B3B3B3;
+  --border: #2A2A2A;
+  --input: #1A1A1A;
+  --primary: #8B4A87;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1A1A1A;
+  --secondary-foreground: #FFFFFF;
+  --accent-foreground: #FFFFFF;
+  --ring: #8B4A87;
 }
 
 * {
@@ -39,14 +72,15 @@ body {
   margin: 0;
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'Ubuntu', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-weight: 400;
   line-height: 1.6;
+  transition: all 0.2s ease;
 }
 
 /* Ensure all elements inherit the font */
 * {
-  font-family: 'Ubuntu', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
 * {
@@ -59,16 +93,19 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
   letter-spacing: -0.025em;
   text-decoration: none;
+  color: var(--foreground);
 }
 
 h1 {
   font-size: 2.25rem;
   font-weight: 700;
+  font-family: 'Caveat', cursive !important;
 }
 
 h2 {
   font-size: 1.875rem;
   font-weight: 600;
+  font-family: 'Caveat', cursive !important;
 }
 
 h3 {
@@ -76,16 +113,41 @@ h3 {
   font-weight: 600;
 }
 
+/* Handwritten accent styles */
+.handwritten {
+  font-family: 'Caveat', cursive !important;
+}
+
+.highlight {
+  font-family: 'Pacifico', cursive !important;
+  background: linear-gradient(120deg, var(--accent) 0%, var(--accent) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
+}
+
+.highlight:hover {
+  background-size: 100% 100%;
+}
+
 /* Buttons */
 button {
-  font-family: 'Ubuntu', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
   font-weight: 500;
-  border-radius: var(--radius);
+  border-radius: 20px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  background-color: var(--cta);
+  color: var(--primary-foreground);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(110, 30, 107, 0.3);
 }
 
 button:focus-visible {
@@ -95,24 +157,60 @@ button:focus-visible {
 
 /* Inputs */
 input, textarea {
-  font-family: 'Ubuntu', sans-serif !important;
-  border-radius: var(--radius);
+  font-family: 'Inter', sans-serif !important;
+  border-radius: 12px;
   border: 1px solid var(--border);
   background-color: var(--input);
-  transition: border-color 0.2s ease-in-out;
+  transition: all 0.2s ease;
+  padding: var(--spacing-sm) var(--spacing-md);
 }
 
 input:focus, textarea:focus {
   outline: none;
-  border-color: var(--ring);
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  border-color: var(--cta);
+  box-shadow: 0 0 0 3px rgba(110, 30, 107, 0.1);
 }
 
 /* Utility Classes */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Cards */
+.card {
+  background-color: var(--background);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Tags */
+.tag {
+  background-color: var(--tags);
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  color: var(--foreground);
+  display: inline-block;
+  margin: 2px;
+}
+
+/* Answer Boxes */
+.answer-box {
+  background-color: var(--cta);
+  color: var(--primary-foreground);
+  border-radius: 10px;
+  padding: var(--spacing-md);
+  font-weight: 600;
 }
 
 /* Mobile responsive styles */
@@ -609,22 +707,34 @@ input:focus, textarea:focus {
 /* Question card spacing */
 .question-card {
   margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: var(--background);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.question-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .question-card-content {
-  padding: 1.5rem;
+  padding: var(--spacing-lg);
 }
 
 .question-card-header {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
 }
 
 .question-card-body {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
 }
 
 .question-card-footer {
-  margin-top: 1rem;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border);
 }
 
 /* Improve spacing consistency */
@@ -767,47 +877,47 @@ input:focus, textarea:focus {
 }
 
 .text-black {
-  color: #000000;
+  color: var(--foreground);
 }
 
 .text-white {
-  color: #ffffff;
+  color: var(--primary-foreground);
 }
 
 .text-gray-500 {
-  color: #6c757d;
+  color: var(--subtext);
 }
 
 .text-gray-600 {
-  color: #495057;
+  color: var(--subtext);
 }
 
 .text-gray-700 {
-  color: #343a40;
+  color: var(--foreground);
 }
 
 .bg-black {
-  background-color: #000000;
+  background-color: var(--cta);
 }
 
 .bg-white {
-  background-color: #ffffff;
+  background-color: var(--background);
 }
 
 .bg-gray-50 {
-  background-color: #f8f9fa;
+  background-color: var(--muted);
 }
 
 .bg-gray-100 {
-  background-color: #e9ecef;
+  background-color: var(--tags);
 }
 
 .bg-gray-200 {
-  background-color: #dee2e6;
+  background-color: var(--border);
 }
 
 .bg-red-500 {
-  background-color: #dc3545;
+  background-color: var(--destructive);
 }
 
 .bg-red-600 {
@@ -815,19 +925,19 @@ input:focus, textarea:focus {
 }
 
 .bg-blue-500 {
-  background-color: #000000;
+  background-color: var(--cta);
 }
 
 .bg-blue-600 {
-  background-color: #1a1a1a;
+  background-color: var(--cta);
 }
 
 .bg-green-500 {
-  background-color: #000000;
+  background-color: var(--cta);
 }
 
 .bg-green-600 {
-  background-color: #1a1a1a;
+  background-color: var(--cta);
 }
 
 /* Voting colors */
