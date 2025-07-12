@@ -354,7 +354,7 @@ const QuestionDetail = () => {
                           className={`transition-colors text-2xl p-1 rounded hover:bg-gray-100 ${
                             isAuthenticated && userVotes[answer._id] === 'up' 
                               ? 'text-blue-600' 
-                              : 'text-gray-400 hover:text-black'
+                              : 'text-white hover:text-black'
                           }`}
                           title={isAuthenticated ? "Upvote" : "Login to vote"}
                         >

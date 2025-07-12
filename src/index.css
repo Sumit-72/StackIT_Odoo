@@ -64,6 +64,290 @@
   --ring: #8B4A87;
 }
 
+/* Dark mode specific styles for question details */
+[data-theme="dark"] .question-card {
+  background-color: #1A1A1A;
+  border-color: #2A2A2A;
+}
+
+[data-theme="dark"] .question-card h1,
+[data-theme="dark"] .question-card h2,
+[data-theme="dark"] .question-card h3,
+[data-theme="dark"] .question-card h4,
+[data-theme="dark"] .question-card h5,
+[data-theme="dark"] .question-card h6 {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .question-card p,
+[data-theme="dark"] .question-card div,
+[data-theme="dark"] .question-card span {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .text-gray-600 {
+  color: #B3B3B3 !important;
+}
+
+[data-theme="dark"] .text-gray-500 {
+  color: #B3B3B3 !important;
+}
+
+[data-theme="dark"] .text-gray-700 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .text-black {
+  color: #FFFFFF !important;
+}
+
+/* Dark mode for answer cards */
+[data-theme="dark"] .answer-card,
+[data-theme="dark"] .answer-content {
+  background-color: #1A1A1A;
+  border-color: #2A2A2A;
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .answer-card h1,
+[data-theme="dark"] .answer-card h2,
+[data-theme="dark"] .answer-card h3,
+[data-theme="dark"] .answer-card h4,
+[data-theme="dark"] .answer-card h5,
+[data-theme="dark"] .answer-card h6,
+[data-theme="dark"] .answer-content h1,
+[data-theme="dark"] .answer-content h2,
+[data-theme="dark"] .answer-content h3,
+[data-theme="dark"] .answer-content h4,
+[data-theme="dark"] .answer-content h5,
+[data-theme="dark"] .answer-content h6 {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .answer-card p,
+[data-theme="dark"] .answer-card div,
+[data-theme="dark"] .answer-card span,
+[data-theme="dark"] .answer-content p,
+[data-theme="dark"] .answer-content div,
+[data-theme="dark"] .answer-content span {
+  color: #FFFFFF;
+}
+
+/* Dark mode for markdown content */
+[data-theme="dark"] .text-gray-600.leading-relaxed {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .text-gray-600.leading-relaxed p {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .text-gray-600.leading-relaxed h1,
+[data-theme="dark"] .text-gray-600.leading-relaxed h2,
+[data-theme="dark"] .text-gray-600.leading-relaxed h3 {
+  color: #FFFFFF !important;
+}
+
+/* Specific dark mode styles for markdown renderer in question details */
+[data-theme="dark"] .question-card .text-gray-600.leading-relaxed,
+[data-theme="dark"] .answer-card .text-gray-600.leading-relaxed,
+[data-theme="dark"] .answer-content .text-gray-600.leading-relaxed {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .question-card .text-gray-600.leading-relaxed p,
+[data-theme="dark"] .answer-card .text-gray-600.leading-relaxed p,
+[data-theme="dark"] .answer-content .text-gray-600.leading-relaxed p {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .question-card .text-gray-600.leading-relaxed h1,
+[data-theme="dark"] .question-card .text-gray-600.leading-relaxed h2,
+[data-theme="dark"] .question-card .text-gray-600.leading-relaxed h3,
+[data-theme="dark"] .answer-card .text-gray-600.leading-relaxed h1,
+[data-theme="dark"] .answer-card .text-gray-600.leading-relaxed h2,
+[data-theme="dark"] .answer-card .text-gray-600.leading-relaxed h3,
+[data-theme="dark"] .answer-content .text-gray-600.leading-relaxed h1,
+[data-theme="dark"] .answer-content .text-gray-600.leading-relaxed h2,
+[data-theme="dark"] .answer-content .text-gray-600.leading-relaxed h3 {
+  color: #FFFFFF !important;
+}
+
+/* Force white color for all text in markdown renderer within cards */
+[data-theme="dark"] .question-card .text-gray-600.leading-relaxed *,
+[data-theme="dark"] .answer-card .text-gray-600.leading-relaxed *,
+[data-theme="dark"] .answer-content .text-gray-600.leading-relaxed * {
+  color: #FFFFFF !important;
+}
+
+/* Specific override for SimpleMarkdownRenderer */
+[data-theme="dark"] .question-card .text-gray-600.leading-relaxed.overflow-hidden,
+[data-theme="dark"] .answer-card .text-gray-600.leading-relaxed.overflow-hidden,
+[data-theme="dark"] .answer-content .text-gray-600.leading-relaxed.overflow-hidden {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .question-card .text-gray-600.leading-relaxed.overflow-hidden *,
+[data-theme="dark"] .answer-card .text-gray-600.leading-relaxed.overflow-hidden *,
+[data-theme="dark"] .answer-content .text-gray-600.leading-relaxed.overflow-hidden * {
+  color: #FFFFFF !important;
+}
+
+/* Override hardcoded text-black classes in SimpleMarkdownRenderer */
+[data-theme="dark"] .text-black {
+  color: #FFFFFF !important;
+}
+
+/* Dark mode styles for question content in question details page */
+[data-theme="dark"] .prose {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose * {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose p {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose h1,
+[data-theme="dark"] .prose h2,
+[data-theme="dark"] .prose h3,
+[data-theme="dark"] .prose h4,
+[data-theme="dark"] .prose h5,
+[data-theme="dark"] .prose h6 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose strong {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose em {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose ul,
+[data-theme="dark"] .prose ol {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose li {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose a {
+  color: #64B5F6 !important;
+}
+
+[data-theme="dark"] .prose a:hover {
+  color: #90CAF9 !important;
+}
+
+[data-theme="dark"] .prose code {
+  color: #FFFFFF !important;
+  background-color: #2A2A2A !important;
+}
+
+[data-theme="dark"] .prose pre {
+  background-color: #2A2A2A !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose pre code {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .prose blockquote {
+  color: #FFFFFF !important;
+  border-left-color: #2A2A2A !important;
+}
+
+/* Specific dark mode styles for question details page */
+[data-theme="dark"] .bg-white {
+  background-color: #1A1A1A !important;
+}
+
+[data-theme="dark"] .border-gray-200 {
+  border-color: #2A2A2A !important;
+}
+
+[data-theme="dark"] .bg-gray-50 {
+  background-color: #2A2A2A !important;
+}
+
+[data-theme="dark"] .border-gray-100 {
+  border-color: #2A2A2A !important;
+}
+
+[data-theme="dark"] .border-gray-300 {
+  border-color: #2A2A2A !important;
+}
+
+/* Dark mode styles for select dropdowns (filter buttons) */
+[data-theme="dark"] select {
+  background-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+  border-color: #2A2A2A !important;
+}
+
+[data-theme="dark"] select option {
+  background-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] select:focus {
+  border-color: #8B4A87 !important;
+  ring-color: #8B4A87 !important;
+}
+
+[data-theme="dark"] .text-black.mb-2 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .text-xl.font-bold.text-black.mb-2,
+[data-theme="dark"] .text-lg.font-semibold.text-black.mb-2,
+[data-theme="dark"] .text-base.font-semibold.text-black.mb-1 {
+  color: #FFFFFF !important;
+}
+
+/* Override all text colors in markdown content */
+[data-theme="dark"] .text-gray-600 {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .text-gray-600.leading-relaxed {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden {
+  color: #FFFFFF !important;
+}
+
+/* Force all elements in markdown to be white */
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden h1,
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden h2,
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden h3,
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden p,
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden li,
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden div,
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden span,
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden strong,
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden em,
+[data-theme="dark"] .text-gray-600.leading-relaxed.overflow-hidden u {
+  color: #FFFFFF !important;
+}
+
+/* Override any remaining text colors */
+[data-theme="dark"] [class*="text-black"] {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] [class*="text-gray"] {
+  color: #FFFFFF !important;
+}
+
 * {
   border-color: var(--border);
 }
@@ -99,13 +383,13 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 2.25rem;
   font-weight: 700;
-  font-family: 'Caveat', cursive !important;
+  font-family: 'Kalam', cursive !important;
 }
 
 h2 {
   font-size: 1.875rem;
   font-weight: 600;
-  font-family: 'Caveat', cursive !important;
+  font-family: 'Kalam', cursive !important;
 }
 
 h3 {

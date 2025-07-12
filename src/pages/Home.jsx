@@ -169,7 +169,7 @@ const Home = () => {
                 <div className="question-card-content">
                   <div className="question-card-header flex justify-between items-start">
                     <Link to={`/question/${question._id}`} className="flex-1">
-                      <h2 className="text-xl font-semibold text-black hover:text-gray-600 transition-colors">
+                      <h2 className="text-xl font-semibold text-black hover:text-gray-600 transition-colors handwritten">
                         {question.title}
                       </h2>
                     </Link>
