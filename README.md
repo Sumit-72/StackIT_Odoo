@@ -3,10 +3,10 @@
 A modern Q&A platform built with React frontend and Node.js backend.
 
 Novice Coders
-Sumit Shekhar - shekharsumit65@gmail.com
-Pranav Prajyot - krsujal2004@gmail.com
-Kumar Sujal - pranavprajyot31@gmail.com
-Mayank Nishant - nishantmayank00@gmail.com
+* Sumit Shekhar - shekharsumit65@gmail.com
+* Pranav Prajyot - krsujal2004@gmail.com
+* Kumar Sujal - pranavprajyot31@gmail.com
+* Mayank Nishant - nishantmayank00@gmail.com
 
 ## Features
 
