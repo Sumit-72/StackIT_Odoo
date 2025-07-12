@@ -69,7 +69,7 @@ const Ask = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="What's your question? Be specific."
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black focus:border-black text-white"
             required
           />
           <p className="text-sm text-gray-500 mt-2">
@@ -110,7 +110,7 @@ const Ask = () => {
             value={tags}
             onChange={(e) => setTags(e.target.value)}
             placeholder="Add up to 5 tags separated by commas (e.g., javascript, react, web-development)"
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black focus:border-black"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black focus:border-black text-white"
           />
           <p className="text-sm text-gray-500 mt-2">
             Add up to 5 tags to help categorize your question

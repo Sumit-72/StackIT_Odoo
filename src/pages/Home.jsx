@@ -169,7 +169,7 @@ const Home = () => {
                 <div className="question-card-content">
                   <div className="question-card-header flex justify-between items-start">
                     <Link to={`/question/${question._id}`} className="flex-1">
-                      <h2 className="text-xl font-semibold text-black hover:text-gray-600 transition-colors handwritten">
+                      <h2 className="text-xxl font-semibold text-black hover:text-gray-600 transition-colors handwritten">
                         {question.title}
                       </h2>
                     </Link>
@@ -203,7 +203,7 @@ const Home = () => {
                           {question.tags.slice(0, 3).map((tag, index) => (
                             <span
                               key={index}
-                              className="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs"
+                              className="bg-gray-100 text-gray-600 px-4 py-2 rounded text-xs"
                             >
                               {tag}
                             </span>
@@ -239,7 +239,7 @@ const Home = () => {
               <button
                 key={pageNumber}
                 onClick={() => handlePageChange(pageNumber)}
-                className={`px-3 py-2 text-sm border rounded-lg transition-colors ${
+                className={`px-4 py-2 text-sm border rounded-lg transition-colors ${
                   currentPage === pageNumber
                     ? 'bg-black text-white border-black'
                     : 'border-gray-300 text-gray-700 hover:bg-gray-50'

@@ -265,7 +265,7 @@ const QuestionDetail = () => {
               {question.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium"
+                  className="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-medium"
                 >
                   {tag}
                 </span>

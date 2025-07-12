@@ -63,7 +63,7 @@ const Navbar = () => {
             
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+              className="p-2 w-12 rounded-full hover:bg-gray-100 transition-colors"
               title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDarkMode ? (
