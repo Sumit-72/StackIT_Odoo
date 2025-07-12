@@ -22,6 +22,9 @@ app.use('/api/questions', questionRoutes);
 app.use('/api/answers', answerRoutes);
 app.use('/api/notifications', notificationRoutes);
 
-mongoose.connect(process.env.MONGO_URI, () => console.log('MongoDB connected'));
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 app.listen(process.env.PORT || 3000, () => console.log('Server running...'));

@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const answerSchema = new mongoose.Schema({
   text: String,
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
