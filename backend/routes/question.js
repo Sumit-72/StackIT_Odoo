@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Question = require('../models/Question');
 const Answer = require('../models/Answer');
+const Notification = require('../models/Notification');
+const User = require('../models/User');
 const auth = require('../middleware/auth');
 
-// Get all questions
 router.get('/', async (req, res) => {
   try {
     const questions = await Question.find()
@@ -16,7 +17,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get single question
 router.get('/:id', async (req, res) => {
   try {
     const question = await Question.findById(req.params.id)
@@ -30,7 +30,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Get answers for a question
 router.get('/:id/answers', async (req, res) => {
   try {
     const answers = await Answer.find({ question: req.params.id })
@@ -42,7 +41,6 @@ router.get('/:id/answers', async (req, res) => {
   }
 });
 
-// Create answer for a question
 router.post('/:id/answers', auth, async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);
@@ -59,9 +57,24 @@ router.post('/:id/answers', auth, async (req, res) => {
     const newAnswer = await answer.save();
     await newAnswer.populate('user', 'username');
     
-    // Add answer to question
     question.answers.push(newAnswer._id);
     await question.save();
+    
+    try {
+      if (question.user.toString() !== req.user.id) {
+        const notification = new Notification({
+          user: question.user,
+          type: 'new_answer',
+          title: 'New Answer to Your Question',
+          message: `${req.user.username} answered your question "${question.title}"`,
+          question: question._id,
+          answer: newAnswer._id
+        });
+        await notification.save();
+      }
+    } catch (notificationError) {
+      console.error('Error creating answer notification:', notificationError);
+    }
     
     res.status(201).json(newAnswer);
   } catch (error) {
@@ -69,7 +82,6 @@ router.post('/:id/answers', auth, async (req, res) => {
   }
 });
 
-// Create question
 router.post('/', auth, async (req, res) => {
   try {
     const question = new Question({
@@ -80,13 +92,30 @@ router.post('/', auth, async (req, res) => {
     });
     const newQuestion = await question.save();
     await newQuestion.populate('user', 'username');
+    
+    try {
+      const allUsers = await User.find({ _id: { $ne: req.user.id } });
+      const notifications = allUsers.map(user => ({
+        user: user._id,
+        type: 'new_question',
+        title: 'New Question Posted',
+        message: `A new question "${req.body.title}" has been posted`,
+        question: newQuestion._id
+      }));
+      
+      if (notifications.length > 0) {
+        await Notification.insertMany(notifications);
+      }
+    } catch (notificationError) {
+      console.error('Error creating notifications:', notificationError);
+    }
+    
     res.status(201).json(newQuestion);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
 });
 
-// Update question
 router.patch('/:id', auth, async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);
@@ -107,7 +136,6 @@ router.patch('/:id', auth, async (req, res) => {
   }
 });
 
-// Delete question
 router.delete('/:id', auth, async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);
@@ -118,6 +146,8 @@ router.delete('/:id', auth, async (req, res) => {
     if (question.user.toString() !== req.user.id) {
       return res.status(401).json({ message: 'Not authorized' });
     }
+    
+    await Notification.deleteMany({ question: question._id });
     
     await question.deleteOne();
     res.json({ message: 'Question deleted' });
