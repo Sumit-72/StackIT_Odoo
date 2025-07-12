@@ -22,6 +22,11 @@ app.use('/api/questions', questionRoutes);
 app.use('/api/answers', answerRoutes);
 app.use('/api/notifications', notificationRoutes);
 
+// Health check or root endpoint
+app.get('/', (req, res) => {
+  res.send('StackIT backend is running!');
+});
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
